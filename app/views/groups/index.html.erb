@@ -1,0 +1,47 @@
+<div class="container mx-auto">
+  <p style="color: green"><%= notice %></p>
+  <h1 class="text-3xl font-bold text-teal-700 text-center">Groups</h1>
+  <div id="groups">
+    <div class="grid grid-cols-3 gap-8 justify-center gap-x-8 p-3">
+      <% @groups.each do |group| %>
+        <div class="card border w-90 bg-slate-100">
+          <% if group.image.attached? %>
+            <%= image_tag group.image, style: 'height:250px;width:400px;' %>
+          <%else%>
+          <% end %>
+          <%=render(GroupComponent.new(group_name: group.group_name, category: group.category )) do %>
+          <%end%>
+          <div class="text-center font-thin">
+            
+            <small>Group members: <%=group.users.size %></small>
+            <br>
+            <small>Articles count: <%=group.articles.size %></small>
+            <br>
+            <small>Created by: <%=group.user.email %></small>
+            <br>
+            <small>Date Created: <%=time_ago_in_words(group.created_at) %> ago</small>
+            <br>
+            <button class="bg-transparent hover:bg-teal-900 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-700 hover:border-transparent rounded">
+              <%= link_to "Join this group", join_group_path(group[:id]) %>
+            </button>
+            <button class="bg-teal-600 hover:bg-teal-900 text-white font-bold py-2 px-4 border border-white rounded">
+              <%= link_to "Show this group", group %>
+            </button>
+          </div>
+          <br>
+        </div>
+      <% end %>
+    </div>
+    <button class="bg-teal-600 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded-full m-1">
+      <%= link_to "New group", new_group_path %>
+    </button>
+  </div>
+</div>
+<br>
+<hr>
+<%= paginate @groups %>
+<hr>
+<br>
+<br>
+<br>
+<br>

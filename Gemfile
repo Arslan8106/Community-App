@@ -8,6 +8,7 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 
 # Use sqlite3 as the database for Active Record
 
@@ -41,7 +42,10 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-gem "devise", "~> 4.8"
+gem "devise", github: "heartcombo/devise", ref: "f8d1ea90bc3"
+gem 'pry', '~> 0.13.1'
+gem "view_component"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -78,3 +82,5 @@ group :production do
 gem 'pg'
 gem 'rails_12factor'
 end
+
+gem "tailwindcss-rails", "~> 2.0"

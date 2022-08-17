@@ -13,16 +13,21 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
+
+    @article_id = session[:article_id]
   end
 
   # GET /comments/1/edit
   def edit
+    
   end
 
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
 
+    @comment.user = current_user
+    @comment.article_id = session[:article_id]
     respond_to do |format|
       if @comment.save
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
@@ -58,13 +63,18 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:user_name, :body, :article_id, :membership_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def load_article!
+    @article = Article.find_by!(id: comment_params[:article_id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:user_name, :body)
+  end
 end

@@ -1,0 +1,18 @@
+<div id="<%= dom_id group %>" , class="text-center p-5">
+  <strong>Group Name:</strong>
+  <%= group.group_name %>
+</p>
+<p>
+  <strong>Category:</strong>
+  <%= group.category %>
+</p>
+<br>
+</div>
+<div class="flex justify-center">
+  <% if group.image.attached? %>
+    <%= image_tag group.image, style: 'height:350px;width:600px;' %>
+  <%else%>
+  <% end %>
+</div>
+
+<hr>

@@ -3,25 +3,31 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles= Article.page(params[:page]).per(6).order(id: :desc)    
+
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+    session[:article_id] = @article.id
   end
 
   # GET /articles/new
   def new
     @article = Article.new
+    @group_id = session[:group_id]
   end
 
   # GET /articles/1/edit
   def edit
+    @group_id = session[:group_id]
   end
 
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
+
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save
@@ -37,6 +43,8 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
     respond_to do |format|
+      
+      @article.group_id = session[:group_id]
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
         format.json { render :show, status: :ok, location: @article }
@@ -49,6 +57,7 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
+  
     @article.destroy
 
     respond_to do |format|
@@ -58,13 +67,14 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:title, :description, :membership_id, :group_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def article_params
+    params.require(:article).permit(:title, :description, :membership_id, :group_id, :image)
+  end
 end
