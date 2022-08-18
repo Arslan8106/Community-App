@@ -59,6 +59,18 @@
         <li><a>
             <%= link_to "Articles", articles_path, class:"block text-teal-900 px-2 py-4 hover:bg-white transition duration-300"%><li>
           </ul>
+          <% if user_signed_in? %>
+          <div class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-white hover:border-transparent bg-white hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          </div>
+        <%else%>
+          <div class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+            <%= link_to 'Login', new_user_session_path%>
+          </div>
+          <div class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-white hover:border-transparent bg-white hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+            <%= link_to 'Signup', new_user_registration_path %>
+          </div>
+        <%end%>
         </div>
         <script>
           const btn = document.querySelector("button.mobile-menu-button");
