@@ -19,8 +19,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
-    @group.user_id = current_user.id
-
+    @group.user = current_user
     @m = @group.memberships.new(:user_id => current_user.id)
     session[:group_id] = @group.id
     respond_to do |format|
