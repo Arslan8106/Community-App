@@ -1,8 +1,10 @@
-<h2>Sign up</h2>
-
+<br><br><br><br>
+<div class="container md mx-auto w-4/12 border rounded-lg bg-slate-100">
+  <h1 class="text-3xl font-bold  text-black font-mono text-center p-2">Sign up</h1>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
+    <div class="text-center">
+  <div class="field text-center">
     <%= f.label :Name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
@@ -24,10 +26,14 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+<br>
+  <button class="bg-transparent hover:bg-teal-900 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-700 hover:border-transparent rounded">
 
-  <div class="actions">
     <%= f.submit "Sign up" %>
-  </div>
+  </button>
+  
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+</div>
+<br><br><br><br><br>
