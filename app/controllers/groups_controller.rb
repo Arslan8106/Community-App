@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
 
     @group.user = current_user
     @m = @group.memberships.new(:user_id => current_user.id)
-    session[:group_id] = @group.id
+ 
     respond_to do |format|
       if @group.save
         format.html { redirect_to group_url(@group), notice: "Group was successfully created." }
