@@ -10,9 +10,11 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     resources :articles do
       resources :comments
+    
     end
   end
   devise_for :users 
+
    
 
   resources :groups do

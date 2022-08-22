@@ -6,9 +6,12 @@ class ArticlesController < ApplicationController
     @articles= Article.page(params[:page]).per(6).order(id: :desc)    
 
   end
+ 
 
   # GET /articles/1 or /articles/1.json
   def show
+  
+    @group_id = @article.group_id
     session[:article_id] = @article.id
   end
 
@@ -20,7 +23,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @group_id = session[:group_id]
+    @group_id = @article.group_id
+
   end
 
   # POST /articles or /articles.json
