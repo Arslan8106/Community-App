@@ -63,14 +63,14 @@ class ArticlesController < ApplicationController
   def destroy
   
     @article.comments.ids.clear
-  
-    @article.user.user_id.clear  
+ 
+    @article.user.clear
           
     @article.destroy
     
 
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+      format.html { redirect_to articles_path, notice: "Article was successfully destroyed." }
       format.json { head :no_content }
     end
   end
