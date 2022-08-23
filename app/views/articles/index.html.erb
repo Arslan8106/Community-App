@@ -1,7 +1,13 @@
 <div class="p-5">
   <p style="color: green"><%= notice %></p>
   <h1 class="text-3xl font-bold  text-black font-mono text-center p-2">Articles</h1>
-  <%= render 'article', obj: @articles %>
+  <div class="container mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 justify-center gap-x-8 p-1 ">
+      <% @articles.each do |article| %>
+        <%=render(ArticleViewComponent.new(article: article ))%>
+      <%end%>
+    </div>
+  </div>
   <br>
   <%# <button class="bg-transparent  hover:bg-teal-900 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-700 hover:border-transparent rounded">
     <%= link_to "New article", new_article_path %>
@@ -11,6 +17,4 @@
   </button>
   <hr>
 </div>
-
-
 <%= paginate @articles %>

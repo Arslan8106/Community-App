@@ -1,5 +1,9 @@
 <h1>New comment</h1>
-<%= render "form" %>
+
+  <%= form_for Comment.new do |form| %>
+   
+          <%=render(NewcommentFormComponent.new(form: form ))%>
+  <% end %>
 <br>
 <div>
   <%= link_to "Back to comments", comments_path %>

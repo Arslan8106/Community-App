@@ -1,6 +1,25 @@
-
-<%= render "form", article: @article %>
-<br>
-<div>
-
+<div class="bg-stone-200">
+  <div class="p-4 lg:w-5/2">
+    <div class="min-h-screen flex items-stretch text-white mx-auto ">
+      <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover  border-black relative items-center" style="background-image: url(https://source.unsplash.com/category/buildings/1600x1400);">
+        <div class="w-full px-24 z-10">
+          <h1 class="text-5xl font-bold text-left tracking-wide">Make it special</h1>
+          <p class="text-3xl my-4">Present your stories in unique way, anywhere through our site to others.</p>
+        </div>
+      </div>
+      <div class="lg:w-1/2 w-full flex items-centerjustify-center text-center md:px-16 px-0 z-0" style="background-color: rgb(10 118 110 );">
+        <div class="w-full py-6 z-20 ">
+          <h1 class="my-6 text-4xl underline">
+            Create new Article
+          </h1>
+          <%= form_for @article do |form| %>
+           
+            <%=render(NewArticlFormComponent.new(form: form, article: @article ))%>
+                     
+  
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

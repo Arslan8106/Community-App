@@ -5,7 +5,7 @@
 
     <div class="grid md:grid-cols-3 gap-8 justify-center gap-x-8 p-3  ">
       <% @groups.each do |group| %>
-        <div class="card border w-90 bg-slate-200 border-gray-300 rounded-lg ">
+        <div class="card border w-90 bg-stone-100 border-gray-300 rounded-lg ">
         <div class="hover:md:motion-safe:animate-pulse ">
           <% if group.image.attached? %>
             <%= image_tag group.image, style: 'height:250px;width:395px;', class:"border-white rounded " %>

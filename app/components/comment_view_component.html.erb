@@ -1,15 +1,13 @@
- <% obj.each do |comment| %>
-
-  <div class="bg-gray-200 px-6 py-4">
+<div class="bg-gray-200 px-6 py-4">
     <div class="uppercase text-xs text-gray-600 font-bold"></div>
     <div class="flex items-center pt-3">
       <div class="bg-blue-700 w-12 h-12 flex justify-center items-center rounded-full uppercase font-bold text-white"><%= comment.user_name.first %><%= comment.user_name.last %></div>
       <div class="ml-4">
         <p class="font-bold"> <%= comment.user_name %></p>
+
         <p class="text-sm text-gray-700 mt-1"><%= comment.body %></p>
-        <small>Commented: <%=time_ago_in_words(comment.created_at) %> ago</small>
+       <small>Commented: <%=time_ago_in_words(comment.created_at) %> ago</small> 
       </div>
     </div>
   </div>
 <hr style="border: 1px solid white ">
-<%end%>

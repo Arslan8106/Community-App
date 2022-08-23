@@ -1,9 +1,19 @@
 <p style="color: green"><%= notice %></p>
 <div class="px-2">
   <h1 class="text-3xl font-bold underline text-teal-700 text-center">Group</h1>
-  <%= render @group %>
+
+       <%=render(GroupComponent.new(group_name: @group.group_name, category: @group.category )) do %>
+          <%end%>
+        
   <h1 class="text-3xl font-bold  text-teal-700 font-mono text-center p-2">Articles</h1>
-  <%= render 'articles/article', obj: @group.articles%>
+    <div class="container mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 justify-center gap-x-8 p-1 ">
+      <% @group.articles.each do |article| %>
+        <%=render(ArticleViewComponent.new(article: article ))%>
+      <%end%>
+    </div>
+  </div>
+
   <br>
 
   <% if user_signed_in? && @group.users.ids.include?(current_user.id)%>

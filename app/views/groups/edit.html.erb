@@ -1,5 +1,8 @@
 <h1>Editing Group</h1>
-<%= render "form", group: @group %>
+
+<%= form_with(model: @group) do |form| %>
+  <%=render(NewGroupFormComponent.new(form: form, group: @group ))%>
+<%end%>
 <br>
 <div>
   <%= link_to "Back to groups", groups_path %>

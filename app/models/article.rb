@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user 
-  belongs_to :group
+  belongs_to :group 
   has_one_attached :image
   has_many :comments 
   validates :title, presence: true, length: { minimum: 3 }

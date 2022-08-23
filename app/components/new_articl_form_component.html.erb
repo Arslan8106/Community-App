@@ -1,19 +1,5 @@
-<div class="bg-stone-200">
-  <div class="p-4 lg:w-5/2">
-    <div class="min-h-screen flex items-stretch text-white mx-auto ">
-      <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover  border-black relative items-center" style="background-image: url(https://source.unsplash.com/category/buildings/1600x1400);">
-        <div class="w-full px-24 z-10">
-          <h1 class="text-5xl font-bold text-left tracking-wide">Make it special</h1>
-          <p class="text-3xl my-4">Present your stories in unique way, anywhere through our site to others.</p>
-        </div>
-      </div>
-      <div class="lg:w-1/2 w-full flex items-centerjustify-center text-center md:px-16 px-0 z-0" style="background-color: rgb(10 118 110 );">
-        <div class="w-full py-6 z-20 ">
-          <h1 class="my-6 text-4xl underline">
-            Create new Article
-          </h1>
-          <%= form_for @article do |form| %>
-            <% if @article.errors.any? %>
+
+ <% if @article.errors.any? %>
               <div style="color: red">
                 <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
                 <ul>
@@ -30,7 +16,7 @@
             <div class="pb-2 pt-4 text-black">
               <h1 class= "text-2xl font-bold text-white"><%= form.label :description, style: "display: block" %></h1>
               <%= form.text_area :description, rows: 10,class: " px-0 w-full border-rounded text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-black", placeholder: "Write Article..." %>
-              <%= form.hidden_field :group_id, :value => @group_id %>
+        
             </div>
             <h1 class= "text-2xl font-bold text-white"><%= form.label :'Upload Image', style: "display: block" %></h1>
             <%= form.file_field :image , class:"block w-full h-15 p-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
@@ -38,9 +24,3 @@
             <div class="px-2 pb-2 pt-4">
               <button class="uppercase block w-full p-4 text-lg text-black rounded-full bg-white hover:bg-teal-900 focus:outline-none"><%= form.submit "Submit" %></button>
             </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
