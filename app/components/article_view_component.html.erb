@@ -1,5 +1,5 @@
 <div class="card border w-90 bg-slate-100 rounded-lg ">
-  <div class="px-6 py-7 text-center text-teal-700">
+  <div class="px-6 py-7 text-center text-teal-700 transition transform hover:-translate-y-0.5">
     <b><%= link_to article.title, article_path(article), class:"font-bold text-xl mb-2 uppercase"  %></b>
     <% if article.image.attached? %>
       <%= image_tag article.image, style: 'height:250px;width:400px;'%>
@@ -11,7 +11,7 @@
   first-letter:mr-3">
     <%= truncate(article.description, length: 270)%>
     <hr >
-    <small>Created by: <%=article.user.email %></small>
+    <small>Created by: <%=article.user.name %></small>
     <br>
     <small>Date Created: <%=time_ago_in_words(article.created_at) %> ago</small>
   </div>

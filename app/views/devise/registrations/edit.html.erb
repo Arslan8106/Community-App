@@ -57,6 +57,10 @@
           <label class="text-sm" for="remember">I agree with the <a class="text-indigo-400 hover:text-indigo-500">Privacy Policy</a>
           </p>
         </div>
+              <div>
+    <%= f.label :Image, style: "display: block" %>
+    <%= f.file_field :image , rows: 8, style:"border 2px", class:"appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline" ,placeholder:"Confirm Password" %>
+  </div>
         <div class="flex items-center justify-center mt-8">
           <button class="text-white py-2 px-4 uppercase rounded bg-teal-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">  <%= f.submit "Update" %> </button>
         </div>

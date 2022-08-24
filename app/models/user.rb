@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :groups, through: :memberships
   has_many :articles, through: :memberships
   has_many :memberships 
+  has_one_attached :image
   has_many :comments, through: :memberships
   has_many :owned_group, foreign_key: "user_id", class_name: "Group"
 
