@@ -1,0 +1,44 @@
+    
+<h2 class="text-2xl font-bold leading-7 text-center text-teal-900 sm:text-3xl sm:tracking-tight sm:truncate uppercase">User Profiles</h2>
+<br>
+<div class="container mx-auto">
+  <% @users.each do |user| %>
+    <div class="p-4 w-full max-w-md bg-stone-100 mx-auto rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div class="flex justify-between items-center mb-4">
+        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">ID <%= user.id %></h5>
+        
+      </div>
+      <div class="flow-root">
+        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+          <li class="py-3 sm:py-4">
+            <div class="flex items-center space-x-4">
+              <div class="flex-shrink-0">
+                <% if user.image.attached? %>
+                  <%= image_tag user.image, class:"w-10 h-10 rounded-full"%>
+                <%else%>
+                <% end %>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-lg font-medium text-gray-900 truncate dark:text-white capitalize">
+                  <%= user.name %>
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  <%= user.email %>
+                </p>
+              </div>
+              <div class="inline-flex items-center text-gray-900  text-sm font-medium  hover:underline dark:text-blue-500">
+               <a href="#" class="">
+          <%= link_to "View User", user%>
+        </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br>
+  <% end %>
+  <%= paginate @users %>
+</div>
+
+

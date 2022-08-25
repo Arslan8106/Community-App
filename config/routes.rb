@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/index'
   get 'static_pages/landing_page'
   get 'static_pages/dashboard'
   resources :comments
@@ -13,9 +14,11 @@ Rails.application.routes.draw do
     
     end
   end
-  devise_for :users 
+  
 
-   
+ 
+  devise_for :users
+resources :users
 
   resources :groups do
     resources :articles
