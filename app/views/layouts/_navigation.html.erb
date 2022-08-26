@@ -62,9 +62,12 @@
       <li><a>
           <%= link_to "Groups", groups_path, class:"block text-teal-900 px-2 py-4 hover:bg-white transition duration-300" %> 
           <li>
-            <li><a>
+            <li>
                 <%= link_to "Articles", articles_path, class:"block text-teal-900 px-2 py-4 hover:bg-white transition duration-300"%>
                 <li>
+                 <li>
+                 <%= link_to "Users", users_index_path, class:"block text-teal-900 px-2 py-4 hover:bg-white transition duration-300"%>
+                 </li>
                 </ul>
                 <% if user_signed_in? %>
                   <div class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-white hover:border-transparent bg-white hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">

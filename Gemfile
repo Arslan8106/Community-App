@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 gem "devise", github: "heartcombo/devise", ref: "f8d1ea90bc3"
 gem 'pry', '~> 0.13.1'
 gem "view_component"
+gem 'gemoji', '~> 3.0', '>= 3.0.1'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
