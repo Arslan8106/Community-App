@@ -2,39 +2,34 @@
   <p style="color: green"><%= notice %></p>
   <h1 class="text-3xl font-bold text-teal-700 text-center ">Groups</h1>
   <div id="groups">
-
     <div class="grid md:grid-cols-3 gap-8 justify-center gap-x-8 p-3  ">
       <% @groups.each do |group| %>
         <div class="card border w-90 bg-stone-100 border-gray-300 rounded-lg ">
-        <div class="hover:md:motion-safe:animate-pulse ">
-          <% if group.image.attached? %>
-            <%= image_tag group.image, style: 'height:250px;width:395px;', class:"border-white rounded " %>
-          <%else%>
-          <% end %>
+          <div class="hover:md:motion-safe:animate-pulse ">
+            <% if group.image.attached? %>
+              <%= image_tag group.image, style: 'height:250px;width:395px;', class:"border-white rounded " %>
+            <%else%>
+            <% end %>
           </div>
           <%=render(GroupComponent.new(group_name: group.group_name, category: group.category )) do %>
           <%end%>
-        
           <div class="text-center font-thin">
-   
             <small>Group members: <%=group.users.size %></small>
             <br>
             <small>Articles count: <%=group.articles.size %></small>
             <br>
-             <% if group.user.name? %>
-            <small>Created by: <%=group.user.name %></small>
+            <% if group.user.name? %>
+              <small>Created by: <%=group.user.name %></small>
             <%else%>
-             <small>Created by: <%=group.user.email %></small>
-             <%end%>
+              <small>Created by: <%=group.user.email %></small>
+            <%end%>
             <br>
             <small>Date Created: <%=time_ago_in_words(group.created_at) %> ago</small>
             <br>
-
-             <% if user_signed_in? && !group.users.ids.include?(current_user.id)%>
-            <button class="bg-transparent transition transform hover:-translate-y-0.5 hover:bg-teal-900 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-700 hover:border-transparent rounded">
-              <%= link_to "Join this group", join_group_path(group[:id]) %>
-            </button>
-          
+            <% if user_signed_in? && !group.users.ids.include?(current_user.id)%>
+              <button class="bg-transparent transition transform hover:-translate-y-0.5 hover:bg-teal-900 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-700 hover:border-transparent rounded">
+                <%= link_to "Join this group", join_group_path(group[:id]) %>
+              </button>
             <%end%>
             <button class="bg-teal-600 hover:bg-teal-900 text-white font-bold py-2 px-4 border-white rounded-lg transition transform hover:-translate-y-0.5">
               <%= link_to "Show this group", group %>
@@ -44,7 +39,6 @@
         </div>
       <% end %>
     </div>
-    
     <button class="bg-teal-600 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded-full m-1 transition transform hover:-translate-x-0.5">
       <%= link_to "New group", new_group_path %>
     </button>
@@ -58,4 +52,3 @@
 <br>
 <br>
 <br>
-

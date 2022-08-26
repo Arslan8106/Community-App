@@ -47,10 +47,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group.articles.ids.clear
-    @group.articles.clear  
-    @group.users.clear  
-    @group.memberships.clear                    # << add this line
+  # << add this line
     @group.destroy
 
     respond_to do |format|

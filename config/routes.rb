@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   
 
  
-  devise_for :users
+  devise_for :users do
+    get ':user/edit-profile' => 'devise/registration#edit', :as => :edit_user_profile
+  end
 resources :users
 
   resources :groups do
