@@ -1,28 +1,27 @@
 <% if @group.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this article from being saved:</h2>
-      <ul>
-        <% @group.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div>
-    <%= form.label :GroupName, style: "display: block" %>
-    <%= form.text_field :group_name %>
+  <div style="color: red">
+    <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+    <ul>
+      <% @group.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
   </div>
-  <br>
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.select :category, ['Public', 'Private']%>
-    <br>
-     <div>
-    <%= form.label :Image, style: "display: block" %>
-    <%= form.file_field :image , rows: 8, style:"border 2px"%>
-  </div>
-    <br>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
+<% end %>
+<div class="pb-2 pt-4 text-black">
+  <h1 class= "text-2xl font-bold text-white"><%= form.label :title, style: "display: block" %></h1>
+  <%= form.text_field :group_name, class: "px-0 w-full border", placeholder: "Group Name..." %>
+</div>
+<div class="pb-2 pt-4 text-black">
+  <h1 class= "text-2xl font-bold text-white"><%= form.label :Category, style: "display: block" %></h1>
+  <%= form.select :category, ['Public','Private'],class: " px-0 w-full border-rounded text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-black", placeholder: "Write Article..." %>
+</div>
+<h1 class= "text-2xl font-bold text-white"><%= form.label :'Upload Image', style: "display: block" %></h1>
+<%= form.file_field :image , class:"block w-full h-15 p-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+<br>
+<div class="px-2 pb-2 pt-4">
+  <button class="uppercase block w-full p-4 text-lg text-black rounded-full bg-white hover:bg-teal-900 focus:outline-none"><%= form.submit "Submit" %></button>
+</div>
+
+
+
